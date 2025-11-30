@@ -1,0 +1,22 @@
+/* Study Groups page styles */
+.study-groups-page {
+  padding: 40px 0;
+  min-height: calc(100vh - 60px);
+}
+
+.study-groups-page h1 {
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.study-groups-page ul {
+  margin-top: 20px;
+  padding-left: 30px;
+}
+
+.study-groups-page li {
+  margin-bottom: 10px;
+  color: #666;
+  line-height: 1.6;
+}
+
