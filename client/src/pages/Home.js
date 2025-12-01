@@ -40,41 +40,41 @@ const Home = () => {
         <div className="container">
           <h2>Key Features</h2>
           <div className="features-grid">
-            <div className="feature-card">
+            <Link to={isAuthenticated ? "/dashboard" : "/register"} className="feature-card">
               <div className="feature-icon">🎯</div>
               <h3>Personalized Learning</h3>
               <p>AI-generated learning paths tailored to your knowledge level and learning style</p>
-            </div>
+            </Link>
             
-            <div className="feature-card">
+            <Link to={isAuthenticated ? "/dashboard" : "/register"} className="feature-card">
               <div className="feature-icon">📊</div>
               <h3>Progress Tracking</h3>
               <p>Monitor your learning journey with detailed analytics and progress reports</p>
-            </div>
+            </Link>
             
-            <div className="feature-card">
+            <Link to={isAuthenticated ? "/dashboard" : "/register"} className="feature-card">
               <div className="feature-icon">🧪</div>
               <h3>Adaptive Quizzes</h3>
               <p>Take quizzes that adjust to your skill level and provide instant feedback</p>
-            </div>
+            </Link>
             
-            <div className="feature-card">
+            <Link to={isAuthenticated ? "/study-groups" : "/register"} className="feature-card">
               <div className="feature-icon">👥</div>
               <h3>Study Groups</h3>
               <p>Collaborate with peers and learn together in study groups</p>
-            </div>
+            </Link>
             
-            <div className="feature-card">
+            <Link to={isAuthenticated ? "/dashboard" : "/register"} className="feature-card">
               <div className="feature-icon">🤖</div>
               <h3>AI Tutoring</h3>
               <p>Get instant explanations and help from our AI tutor</p>
-            </div>
+            </Link>
             
-            <div className="feature-card">
+            <Link to={isAuthenticated ? "/dashboard" : "/register"} className="feature-card">
               <div className="feature-icon">🔐</div>
               <h3>Secure & Private</h3>
               <p>Your data is safe with secure authentication and privacy controls</p>
-            </div>
+            </Link>
           </div>
         </div>
       </div>

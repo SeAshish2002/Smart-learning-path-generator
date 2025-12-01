@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import LearningPath from './pages/LearningPath';
+import ModuleDetail from './pages/ModuleDetail';
 import Quiz from './pages/Quiz';
 import StudyGroups from './pages/StudyGroups';
 import PrivateRoute from './components/PrivateRoute';
@@ -25,7 +26,6 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/auth/callback" element={<Login />} />
             <Route
               path="/dashboard"
               element={
@@ -39,6 +39,14 @@ function App() {
               element={
                 <PrivateRoute>
                   <LearningPath />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/learning-path/:id/module/:moduleIndex"
+              element={
+                <PrivateRoute>
+                  <ModuleDetail />
                 </PrivateRoute>
               }
             />

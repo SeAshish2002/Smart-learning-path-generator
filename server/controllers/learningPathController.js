@@ -18,6 +18,20 @@ const createLearningPath = async (req, res) => {
       user.learningStyle
     );
 
+    // Validate and log AI content for debugging
+    console.log('AI Generated Content:', JSON.stringify(aiContent, null, 2));
+    
+    // Ensure modules have proper content
+    if (aiContent.modules && Array.isArray(aiContent.modules)) {
+      aiContent.modules = aiContent.modules.map((module, index) => {
+        if (!module.content || module.content.trim().length < 10) {
+          console.warn(`Module ${index + 1} has empty or short content, adding default`);
+          module.content = `${module.title}: This module provides comprehensive coverage of key concepts, practical examples, and hands-on exercises to help you master this topic.`;
+        }
+        return module;
+      });
+    }
+
     // Create learning path
     const learningPath = await LearningPath.create({
       userId,

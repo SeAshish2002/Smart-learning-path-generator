@@ -1,7 +1,6 @@
-// Authentication Controller - handles login, register, and OAuth
+// Authentication Controller - handles login and register
 const { User } = require('../models');
 const { generateToken } = require('../utils/jwt');
-const passport = require('passport');
 
 // Register new user
 const register = async (req, res) => {
@@ -117,23 +116,9 @@ const getProfile = async (req, res) => {
   }
 };
 
-// OAuth callback handler
-const oauthCallback = async (req, res) => {
-  try {
-    const user = req.user;
-    const token = generateToken(user.id);
-
-    // Redirect to frontend with token
-    res.redirect(`${process.env.FRONTEND_URL || 'http://localhost:3000'}/auth/callback?token=${token}`);
-  } catch (error) {
-    res.redirect(`${process.env.FRONTEND_URL || 'http://localhost:3000'}/login?error=oauth_failed`);
-  }
-};
-
 module.exports = {
   register,
   login,
-  getProfile,
-  oauthCallback
+  getProfile
 };
 

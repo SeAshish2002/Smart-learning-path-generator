@@ -1,8 +1,7 @@
 // Login page component
 import React, { useState, useContext, useEffect } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import axios from 'axios';
 import './Auth.css';
 
 const Login = () => {
@@ -12,7 +11,6 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const { login, isAuthenticated } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
 
   // Check if already authenticated
   useEffect(() => {
@@ -20,15 +18,6 @@ const Login = () => {
       navigate('/dashboard');
     }
   }, [isAuthenticated, navigate]);
-
-  // Handle OAuth callback
-  useEffect(() => {
-    const token = searchParams.get('token');
-    if (token) {
-      localStorage.setItem('token', token);
-      window.location.href = '/dashboard';
-    }
-  }, [searchParams]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,14 +33,6 @@ const Login = () => {
     }
     
     setLoading(false);
-  };
-
-  const handleGoogleLogin = () => {
-    window.location.href = `${process.env.REACT_APP_API_URL || 'http://localhost:5000/api'}/auth/google`;
-  };
-
-  const handleGitHubLogin = () => {
-    window.location.href = `${process.env.REACT_APP_API_URL || 'http://localhost:5000/api'}/auth/github`;
   };
 
   return (
@@ -84,16 +65,6 @@ const Login = () => {
             {loading ? 'Logging in...' : 'Login'}
           </button>
         </form>
-
-        <div className="oauth-buttons">
-          <p>Or login with:</p>
-          <button onClick={handleGoogleLogin} className="btn btn-secondary">
-            🔵 Google
-          </button>
-          <button onClick={handleGitHubLogin} className="btn btn-secondary">
-            🐙 GitHub
-          </button>
-        </div>
 
         <p className="auth-link">
           Don't have an account? <a href="/register">Register here</a>

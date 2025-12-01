@@ -95,17 +95,6 @@ export const AuthProvider = ({ children }) => {
     delete axios.defaults.headers.common['Authorization'];
   };
 
-  // Handle OAuth callback
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const oauthToken = urlParams.get('token');
-    
-    if (oauthToken) {
-      localStorage.setItem('token', oauthToken);
-      setToken(oauthToken);
-      window.history.replaceState({}, document.title, '/dashboard');
-    }
-  }, []);
 
   const value = {
     user,

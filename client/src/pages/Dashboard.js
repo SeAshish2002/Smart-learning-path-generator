@@ -189,6 +189,23 @@ const Dashboard = () => {
                     <Link to={`/learning-path/${path.id}`} className="btn btn-primary">
                       Continue Learning
                     </Link>
+                    <button
+                      onClick={async () => {
+                        if (window.confirm('Are you sure you want to delete this learning path?')) {
+                          try {
+                            await axios.delete(`/learning-paths/${path.id}`);
+                            fetchData(); // Refresh the list
+                          } catch (error) {
+                            console.error('Error deleting learning path:', error);
+                            alert('Failed to delete learning path');
+                          }
+                        }
+                      }}
+                      className="btn btn-danger"
+                      style={{ marginLeft: '10px', backgroundColor: '#dc3545' }}
+                    >
+                      Delete
+                    </button>
                   </div>
                 </div>
               ))}

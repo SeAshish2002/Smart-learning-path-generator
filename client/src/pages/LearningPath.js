@@ -120,12 +120,20 @@ const LearningPath = () => {
                   <div className="module-meta">
                     <span>⏱️ {module.duration || 30} minutes</span>
                   </div>
-                  <button
-                    onClick={() => handleUpdateProgress(Math.min(100, (index + 1) / modules.length * 100))}
-                    className="btn btn-primary"
-                  >
-                    Mark as Complete
-                  </button>
+                  <div className="module-actions">
+                    <Link 
+                      to={`/learning-path/${id}/module/${index}`}
+                      className="btn btn-primary"
+                    >
+                      Start Module
+                    </Link>
+                    <button
+                      onClick={() => handleUpdateProgress(Math.min(100, (index + 1) / modules.length * 100))}
+                      className="btn btn-secondary"
+                    >
+                      Mark as Complete
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>
